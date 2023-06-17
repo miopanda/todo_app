@@ -1,1 +1,11 @@
-<p>task一覧</p>
+<h1>task一覧</h1>
+<% @tasks.each do |t| %>
+  <div class="task">
+    <div class="task_date">
+      <%= t.created_at %>
+    </div>
+    <div class="task_title">
+      <%= t.title %>
+    </div>
+  </div>
+<% end %>
