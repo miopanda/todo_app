@@ -1,14 +1,23 @@
-<h1 class="heading">task一覧</h1>
+<div class="wrapper">
 
-<%= link_to 'タスク登録', new_task_path %>
+  <h1 class="heading">task一覧</h1>
+  <%= form_with url:  "/tasks", method: :post, id: "form" do |form| %>
+    <%= form.text_field :title, id: "title" %>
+    <%= form.submit '投稿する' , id: "submit" %>
+  <% end %>
 
-<% @tasks.each do |t| %>
+  <div id="list">
+  </div>
+
+  <% @tasks.each do |task| %>
   <div class="task">
-    <div class="task_date">
-      <%= t.created_at %>
+    <div class="task-date">
+      投稿日時：<%= task.created_at %>
     </div>
-    <div class="task_title">
-      <%= t.title %>
+    <div class="task-title">
+      <%= task.title %>
     </div>
   </div>
-<% end %>
+  <% end %>
+
+</div>

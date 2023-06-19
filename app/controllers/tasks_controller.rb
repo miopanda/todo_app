@@ -1,14 +1,11 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
-  end
-
-  def new
-    @task = Task.new
+    @tasks = Task.order(id: "DESC")
   end
 
   def create
-    Task.create(title: params[:title])
+    task = Task.create(title: params[:title])
+    render json:{ task: task }
   end
 
 end
