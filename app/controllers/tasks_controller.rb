@@ -3,13 +3,9 @@ class TasksController < ApplicationController
     @tasks = Task.order(id: "DESC")
   end
 
-  # def new
-  #   @task = Task.new
-  # end
-
   def create
-    Task.create(title: params[:title])
-    redirect_to action: :index
+    task = Task.create(title: params[:title])
+    render json:{ task: task }
   end
 
 end

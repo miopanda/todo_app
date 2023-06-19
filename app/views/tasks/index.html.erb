@@ -1,25 +1,23 @@
 <div class="wrapper">
 
   <h1 class="heading">task一覧</h1>
-
-  <%= form_with url: "/tasks", method: :post, id: "form" do |f| %>
-      <%= f.label "タスク：" %>
-      <%= f.text_field :title %>
-      <%= f.submit "登録する", id: "submit" %>
+  <%= form_with url:  "/tasks", method: :post, id: "form" do |form| %>
+    <%= form.text_field :title, id: "title" %>
+    <%= form.submit '投稿する' , id: "submit" %>
   <% end %>
 
   <div id="list">
   </div>
 
-    <% @tasks.each do |t| %>
-      <div class="task">
-        <div class="task_date">
-          <%= t.created_at %>
-        </div>
-        <div class="task_title">
-          <%= t.title %>
-        </div>
-      </div>
-    <% end %>
+  <% @tasks.each do |task| %>
+  <div class="task">
+    <div class="task-date">
+      投稿日時：<%= task.created_at %>
+    </div>
+    <div class="task-title">
+      <%= task.title %>
+    </div>
+  </div>
+  <% end %>
 
 </div>
